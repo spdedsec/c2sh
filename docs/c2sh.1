@@ -1,0 +1,36 @@
+.TH C2SH 1 "2026-09-26" "c2sh 0.1.0" "User Commands"
+.SH NAME
+c2sh \- C17 interactive Unix shell
+.SH SYNOPSIS
+.B c2sh
+.RB [ -c " command" ]
+.RI [ script ]
+.SH DESCRIPTION
+.B c2sh
+is a Linux-first interactive Unix shell implemented directly with POSIX process, terminal, signal, and file-descriptor APIs.
+.SH OPERATORS
+.BR | , || , && , ; , & , < , > , >> , 2> , 2>>
+.SH BUILTINS
+.BR cd , pwd , echo , export , unset , env , history , jobs , fg , bg , kill , type , which , help , source , true , false , exit .
+.SH FILES
+.I ~/.c2shrc
+.br
+.I ~/.c2sh_history
+.SH ENVIRONMENT
+.B C2SH_HISTORY_FILE
+.br
+.B C2SH_HISTORY_SIZE
+.br
+.B C2SH_NO_COLOR
+.SH EXIT STATUS
+The shell returns the last command status, or the explicit status supplied to
+.B exit .
+.SH SECURITY
+The shell executes commands with the current user's privileges. Startup files and scripts are executable code and must be trusted.
+.SH SEE ALSO
+.BR sh (1),
+.BR bash (1),
+.BR execve (2),
+.BR fork (2),
+.BR pipe (2),
+.BR termios (3)
