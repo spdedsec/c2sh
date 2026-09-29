@@ -1,7 +1,7 @@
 class C2sh < Formula
   desc "Production-minded C17 interactive Unix shell"
-  homepage "https://github.com/YOUR-USER/c2sh"
-  url "https://github.com/YOUR-USER/c2sh/archive/refs/tags/v0.1.0.tar.gz"
+  homepage "https://github.com/spdedsec/c2sh"
+  url "https://github.com/spdedsec/c2sh/archive/refs/tags/v0.1.0.tar.gz"
   sha256 "REPLACE_WITH_RELEASE_SHA256"
   license "GPL-3.0-or-later"
 

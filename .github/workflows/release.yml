@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        run: make clean all test
+      - name: Build source archive
+        run: ./packaging/build-release.sh "${GITHUB_REF_NAME#v}"
+      - name: Add portable binary
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          cp build/c2sh "dist/c2sh-${version}-linux-x86_64"
+          sha256sum "dist/c2sh-${version}-linux-x86_64" >> "dist/c2sh-${version}.sha256"
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: dist/*
